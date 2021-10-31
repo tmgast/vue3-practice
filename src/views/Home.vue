@@ -1,20 +1,19 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div class="counter">
-      {{$store.state.counter}}
-    </div>
   </div>
-  <div class="buttons">
-    <button @click="$store.commit('decreaseCounter')">-</button>
-    <button @click="$store.dispatch('increaseCounter')">+</button>
-  </div>
+  <counter />
+  <buttons />
+  <color-code />
 </template>
 
 <script>
 export default {
   name: 'Home',
-  methods: {
+  components: {
+    'counter': require('@/components/Counter.vue').default,
+    'buttons': require('@/components/Buttons.vue').default,
+    'color-code': require('@/components/ColorCode.vue').default,
   }
 }
 </script>
