@@ -16,45 +16,32 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 import {ref} from 'vue';
 
-export default {
-  setup(){
-    const newTodo = ref('');
-    const todos = ref([]);
+const newTodo = ref('');
+const todos = ref([]);
 
-    function addNewTodo(){
-      console.log(newTodo.value);
-      todos.value.push({
-        id: Date.now(),
-        done: false,
-        content: newTodo.value,
-      });
-      newTodo.value = '';
-    }
+function addNewTodo(){
+  console.log(newTodo.value);
+  todos.value.push({
+    id: Date.now(),
+    done: false,
+    content: newTodo.value,
+  });
+  newTodo.value = '';
+}
 
-    function removeTodo(index){
-      todos.value.splice(index, 1);
-    }
+function removeTodo(index){
+  todos.value.splice(index, 1);
+}
 
-    function toggleDone(todo){
-      todo.done = !todo.done;
-    }
+function toggleDone(todo){
+  todo.done = !todo.done;
+}
 
-    function markAllDone(){
-      todos.value.forEach((todo) => todo.done = true);
-    }
-
-    return {
-      markAllDone,
-      removeTodo,
-      toggleDone,
-      todos,
-      newTodo,
-      addNewTodo,
-    }
-  }
+function markAllDone(){
+  todos.value.forEach((todo) => todo.done = true);
 }
 </script>
 
